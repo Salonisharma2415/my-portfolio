@@ -6303,6 +6303,14 @@ textarea:focus-visible {
 
   .hero-visual {
     order: 0;
+    width: 138px;
+    height: 138px;
+    min-height: 0;
+    margin: 0 auto 10px;
+  }
+
+  .hero-code-mark {
+    margin: 0;
   }
 
   .hero-cover-name {
@@ -7102,4 +7110,28 @@ textarea:focus-visible {
 .sn-contact-link:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .project-problem-label,
+  .project-problem-copy,
+  .project-mobile-workflow {
+    display: none;
+  }
+
+  .project-preview-art {
+    min-height: 245px;
+  }
+
+  .project-slide-copy {
+    padding: 20px 16px;
+  }
+
+  .project-field-label {
+    margin-top: 12px;
+  }
+
+  .project-slide-copy h3 {
+    margin-top: 15px;
+  }
 }

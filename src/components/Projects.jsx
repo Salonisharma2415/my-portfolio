@@ -105,16 +105,16 @@ export default function Projects() {
                 <div className="project-slide-copy">
                   <div className="project-slide-meta"><span>SELECTED WORK / {project.no}</span><span>{project.type}</span></div>
                   <h3>{project.name}</h3>
-                  <p className="project-field-label">THE PROBLEM</p>
-                  <p className="project-slide-summary">{project.problem}</p>
+                  <p className="project-field-label project-problem-label">THE PROBLEM</p>
+                  <p className="project-slide-summary project-problem-copy">{project.problem}</p>
                   <p className="project-field-label">MY ROLE</p>
                   <p className="project-role">{project.role}</p>
                   <p className="project-field-label">TECH STACK</p>
                   <div className="workflow-tags">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
                   <p className="project-field-label">KEY OUTCOME</p>
                   <p className="project-role">{project.outcome}</p>
-                  <p className="project-flow-heading">WORKFLOW</p>
-                  <ol className="project-flow-steps">{project.flow.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span>{step}</li>)}</ol>
+                  <p className="project-flow-heading project-mobile-workflow">WORKFLOW</p>
+                  <ol className="project-flow-steps project-mobile-workflow">{project.flow.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span>{step}</li>)}</ol>
                   {links.length > 0 && <div className="project-resource-links">{links.map((link) => <a key={link.label} href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div>}
                 </div>
               </motion.article>
