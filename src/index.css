@@ -1026,3 +1026,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible 
 @media (max-width:800px) { .skills-orbit-layout { grid-template-columns:1fr; gap:20px; }.skills-orbit-scene { min-height:390px; }.skill-orbit-detail { min-height:180px; border-left:0; border-top:1px solid rgba(255,255,255,.2); background:linear-gradient(180deg,rgba(255,255,255,.035),transparent); } }
 @media (max-width:540px) { .skills-orbit-scene { min-height:340px; border-radius:18px; }.skills-orbit { width:min(76vw,300px); }.skills-orbit-node { min-height:35px; }.skills-orbit-node .orbit-label { padding:8px 10px; font-size:.66rem; }.skills-orbit-core { width:78px; height:78px; }.skills-orbit-core span { font-size:1.25rem; }.skills-orbit-caption { bottom:13px; font-size:6px; } }
 @media (prefers-reduced-motion:reduce) { .skills-orbit,.skills-orbit-node .orbit-label { animation:none!important; } }
+.contact { padding:clamp(76px,8vw,100px) 0 24px; }
+.contact .copy { margin:20px 0 0; }
+@media (max-width:700px) { .contact { padding:68px 0 20px; }.contact .copy { margin-top:16px; } }
