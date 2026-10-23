@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useInView } from 'framer-motion'
 import ProjectPreview from './ProjectPreview'
 import Reveal from './Reveal'
 
@@ -38,11 +38,20 @@ const projects = [
 
 export default function Projects() {
   const [active, setActive] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { amount: 0.25 })
   const project = projects[active]
   const showProject = (index) => setActive((index + projects.length) % projects.length)
 
+  useEffect(() => {
+    if (!isInView || paused) return undefined
+    const timer = window.setTimeout(() => showProject(active + 1), 3000)
+    return () => window.clearTimeout(timer)
+  }, [active, isInView, paused])
+
   return (
-    <section id="projects" className="work-section project-slider-section">
+    <section id="projects" className="work-section project-slider-section" ref={sectionRef}>
       <div className="container">
         <Reveal>
           <div className="work-heading">
@@ -55,7 +64,7 @@ export default function Projects() {
         </Reveal>
 
         <Reveal delay={0.08} y={70}>
-          <div className="project-slider" aria-roledescription="carousel" aria-label="Selected project workflows">
+          <div className="project-slider" aria-roledescription="carousel" aria-label="Selected project workflows" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }}>
             <AnimatePresence mode="wait">
               <motion.article
                 key={project.no}

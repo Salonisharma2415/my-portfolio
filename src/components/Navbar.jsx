@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 
-const links = ['home', 'about', 'projects', 'skills', 'contact']
+const links = ['home', 'about', 'skills', 'projects', 'services', 'contact']
 
 export default function Navbar() {
   const [active, setActive] = useState('home')

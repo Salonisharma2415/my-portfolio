@@ -1,40 +1,60 @@
-import { FaPhp, FaJs, FaBootstrap, FaCss3Alt, FaDocker, FaGitAlt } from 'react-icons/fa'
-import { SiJquery, SiMysql } from 'react-icons/si'
+﻿import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import Reveal from './Reveal'
 
-const technologies = [
-  { icon: <FaPhp />, name: 'PHP', group: 'Backend' },
-  { icon: <FaJs />, name: 'JavaScript', group: 'Frontend' },
-  { icon: <SiMysql />, name: 'MySQL', group: 'Database' },
-  { icon: <SiJquery />, name: 'jQuery', group: 'Frontend' },
-  { icon: <FaBootstrap />, name: 'Bootstrap', group: 'UI' },
-  { icon: <FaCss3Alt />, name: 'CSS3', group: 'UI' },
-  { icon: <FaDocker />, name: 'Docker', group: 'Tools' },
-  { icon: <FaGitAlt />, name: 'Git', group: 'Tools' },
+const skills = [
+  { name: 'PHP', category: 'Backend language', detail: 'Building server-side features and business logic.' },
+  { name: 'JavaScript', category: 'Programming language', detail: 'Adding useful interactions to everyday workflows.' },
+  { name: 'MySQL', category: 'Database', detail: 'Working with relational data and operational records.' },
+  { name: 'jQuery', category: 'Frontend library', detail: 'Creating dynamic forms and responsive UI behavior.' },
+  { name: 'Bootstrap', category: 'UI framework', detail: 'Building layouts that adapt across screen sizes.' },
+  { name: 'CSS3', category: 'Styling', detail: 'Crafting page layouts, visual details and motion.' },
+  { name: 'REST APIs', category: 'Integration', detail: 'Connecting application screens with backend services.' },
+  { name: 'Git', category: 'Version control', detail: 'Tracking changes and collaborating on code.' },
+  { name: 'Docker', category: 'Development tools', detail: 'Using containers in local development workflows.' },
 ]
 
 export default function Skills() {
+  const [active, setActive] = useState(skills[0])
+
   return (
-    <section id="skills" className="tech-section">
+    <section id="skills" className="skills-section">
       <div className="container">
         <Reveal>
-          <div className="tech-heading">
-            <div><p className="tag">MY TOOLKIT</p><h2 className="section-title">The tools behind <span>the work.</span></h2></div>
-            <p className="tech-intro">A practical stack I’ve used to build responsive interfaces, business logic and data driven applications.</p>
+          <div className="skills-heading">
+            <div><p className="tag">THE TOOLS I WORK WITH</p><h2 className="section-title">My technology <span>stack.</span></h2></div>
+            <p className="skills-intro">The languages and tools I use across my projects. Select one to see how it fits into my work.</p>
           </div>
         </Reveal>
-        <div className="tech-showcase">
-          <div className="tech-list-panel">
-            <div className="tech-list-caption"><span>TECHNOLOGIES I USE</span><span>{String(technologies.length).padStart(2, '0')}</span></div>
-            <div className="tech-list">
-              {technologies.map((tech, index) => (
-                <Reveal key={tech.name} delay={index * 0.035} y={15}>
-                  <div className="tech-row"><span className="tech-row-no">0{index + 1}</span><span className="tech-row-icon">{tech.icon}</span><strong>{tech.name}</strong><small>{tech.group}</small><span className="tech-row-mark" aria-hidden="true">↗</span></div>
-                </Reveal>
-              ))}
-            </div>
-            <div className="tech-note"><span>+</span> REST APIs · GitHub · Responsive UI</div>
+
+        <div className="skills-readable-layout">
+          <div className="skills-readable-grid" aria-label="Technologies and tools">
+            {skills.map((skill, index) => (
+              <motion.button
+                type="button"
+                key={skill.name}
+                className={`skill-readable-item ${active.name === skill.name ? 'selected' : ''}`}
+                aria-pressed={active.name === skill.name}
+                onClick={() => setActive(skill)}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.18 }}
+              >
+                <span className="skill-readable-index">{String(index + 1).padStart(2, '0')}</span>
+                <strong>{skill.name}</strong>
+                <span className="skill-readable-category">{skill.category}</span>
+                <span className="skill-readable-arrow" aria-hidden="true">↗</span>
+              </motion.button>
+            ))}
           </div>
+
+          <AnimatePresence mode="wait">
+            <motion.article key={active.name} className="skill-readable-detail" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} aria-live="polite">
+              <span className="skill-detail-index">SELECTED TOOL <i>—</i> {String(skills.findIndex((skill) => skill.name === active.name) + 1).padStart(2, '0')}</span>
+              <h3>{active.name}</h3>
+              <p>{active.detail}</p>
+            </motion.article>
+          </AnimatePresence>
         </div>
       </div>
     </section>
