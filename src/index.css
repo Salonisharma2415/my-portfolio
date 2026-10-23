@@ -6917,6 +6917,8 @@ textarea:focus-visible {
 
   .skills-orbit {
     width: min(76vw, 300px);
+    max-width: 88%;
+    animation: none;
   }
 
   .skills-orbit-node {
@@ -6924,7 +6926,8 @@ textarea:focus-visible {
   }
 
   .skills-orbit-node { width: 44px; height: 44px; }
-  .skills-orbit-node-face svg { width: 22px; height: 22px; }
+  .skills-orbit-node-face { animation: none; }
+  .skills-orbit-node-face svg { width: 22px; height: 22px; color: var(--icon-color); }
 
   .skills-orbit-core {
     width: 78px;
