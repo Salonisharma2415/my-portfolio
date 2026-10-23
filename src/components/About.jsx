@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion, useInView } from 'framer-motion'
+import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion'
 import ProfilePortrait from './ProfilePortrait'
 import Reveal from './Reveal'
 
@@ -14,6 +14,7 @@ export default function About() {
   const [paused, setPaused] = useState(false)
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { amount: 0.25 })
+  const prefersReducedMotion = useReducedMotion()
   const changeSlide = (direction) => setActive((current) => (current + direction + journey.length) % journey.length)
   const handleDragEnd = (_, info) => {
     if (info.offset.x < -55) changeSlide(1)
@@ -22,10 +23,10 @@ export default function About() {
   const slide = journey[active]
 
   useEffect(() => {
-    if (!isInView || paused) return undefined
+    if (!isInView || paused || prefersReducedMotion) return undefined
     const timer = window.setTimeout(() => changeSlide(1), 3000)
     return () => window.clearTimeout(timer)
-  }, [active, isInView, paused])
+  }, [active, isInView, paused, prefersReducedMotion])
 
   return (
     <section id="about" className="about-section" ref={sectionRef}>

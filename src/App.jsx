@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, MotionConfig } from 'framer-motion'
 import Loader from './components/Loader'
 import Cursor from './components/Cursor'
 import Navbar from './components/Navbar'
@@ -18,7 +18,7 @@ export default function App() {
   }, [loading])
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <AnimatePresence>
         {loading && <Loader onDone={() => setLoading(false)} />}
       </AnimatePresence>
@@ -37,6 +37,6 @@ export default function App() {
           </main>
         </>
       )}
-    </>
+    </MotionConfig>
   )
 }
