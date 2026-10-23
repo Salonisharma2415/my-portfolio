@@ -6,51 +6,51 @@ import Reveal from './Reveal'
 const projects = [
   {
     no: '01', name: 'Smart HMS', type: 'Hospital management', accent: 'mint',
-    problem: 'Hospital teams need patient visits, investigations, lab results, pharmacy and inventory to work as connected steps.',
-    role: 'Software developer — healthcare workflow features',
-    stack: ['PHP', 'MySQL', 'JavaScript', 'jQuery', 'Bootstrap'],
-    outcome: 'Add a verified project result or measurable impact here.',
-    flow: ['Patient visits & records', 'Investigation orders and lab results', 'Pharmacy dispensing & inventory', 'Reports across hospital workflows'],
+    problem: 'Connect patient records with investigations, lab results, pharmacy and inventory.',
+    role: 'Built workflows across investigations, lab results, pharmacy, inventory and reports.',
+    stack: ['PHP', 'MySQL', 'JavaScript', 'REST APIs', 'Git'],
+    outcome: 'Brought core hospital activities and records into one workflow.',
+    flow: ['Patient records', 'Investigations & lab results', 'Pharmacy & medicine billing', 'Inventory & reports'],
     preview: { eyebrow: 'HOSPITAL OPERATIONS', title: 'Patient workflow', type: 'flow' },
     liveUrl: '', githubUrl: '',
   },
   {
     no: '02', name: 'PMS', type: 'Property management', accent: 'lavender',
-    problem: 'Property teams need a clear view of every unit, its occupancy, owner or tenant, rental status and receipts.',
-    role: 'Software developer — property workflow features',
+    problem: 'Track units, occupancy, tenants, rental status and receipts in one place.',
+    role: 'Built unit, owner, tenant and payment tracking workflows.',
     stack: ['PHP', 'MySQL', 'JavaScript', 'jQuery', 'Bootstrap'],
-    outcome: 'Add a verified project result or measurable impact here.',
-    flow: ['Property portfolio and unit inventory', 'Available, owner-occupied and rented status', 'Tenant / customer and occupancy records', 'Receipts, payment history and reports'],
+    outcome: 'Made unit availability, occupancy and receipts easier to review.',
+    flow: ['Property units', 'Owner / tenant status', 'Occupancy & rent', 'Receipts & reports'],
     preview: { eyebrow: 'PROPERTY MANAGEMENT', title: 'Unit occupancy', type: 'units', items: ['A-12 · Owner occupied', 'A-14 · Rented', 'B-03 · Tenant', 'B-04 · Available'] },
     liveUrl: '', githubUrl: '',
   },
   {
     no: '03', name: 'Conquerent', type: 'Purchase & store operations', accent: 'amber',
-    problem: 'Teams need products to stay traceable from the purchase order through receiving, store inventory and dispatch.',
-    role: 'Software developer — purchasing and inventory workflow features',
+    problem: 'Track products from purchase order to store stock and dispatch.',
+    role: 'Worked across purchasing, receiving, inventory and dispatch workflows.',
     stack: ['PHP', 'MySQL', 'JavaScript', 'jQuery', 'Bootstrap'],
-    outcome: 'Add a verified project result or measurable impact here.',
-    flow: ['Purchase request and purchase order', 'Goods receiving and stock entry', 'Store inventory and product movement', 'Dispatch and order tracking'],
+    outcome: 'Created a traceable path from purchasing through dispatch.',
+    flow: ['Purchase order', 'Goods received', 'Store inventory', 'Dispatch'],
     preview: { eyebrow: 'PURCHASE & STORE', title: 'Product lifecycle', type: 'flow' },
     liveUrl: '', githubUrl: '',
   },
   {
     no: '04', name: 'Pharmacy module', type: 'Healthcare operations', accent: 'rose',
-    problem: 'Pharmacy teams need medicine stock, prescriptions, dispensing and billing in one easy-to-follow flow.',
-    role: 'Software developer — pharmacy workflow features',
-    stack: ['PHP', 'MySQL', 'JavaScript', 'jQuery', 'Bootstrap'],
-    outcome: 'Add a verified project result or measurable impact here.',
-    flow: ['Medicine catalog and stock', 'Prescription review', 'Dispensing and billing', 'Usage and stock reports'],
+    problem: 'Keep medicine purchasing, stock, billing and records connected.',
+    role: 'Worked on medicine purchasing, billing and maintaining clear pharmacy records.',
+    stack: ['PHP', 'MySQL', 'JavaScript', 'REST APIs', 'Git'],
+    outcome: 'Linked purchase entries with stock, billing and pharmacy records.',
+    flow: ['Medicine purchase', 'Stock records', 'Billing & dispensing', 'History & reports'],
     preview: { eyebrow: 'PHARMACY OPERATIONS', title: 'Medicine workflow', type: 'flow' },
     liveUrl: '', githubUrl: '',
   },
   {
     no: '05', name: 'IVF module', type: 'Clinical workflow', accent: 'blue',
-    problem: 'Care teams need patient, treatment, investigation and follow-up records organized across an IVF journey.',
+    problem: 'Organize patient, treatment, investigation and follow-up records.',
     role: 'Software developer — clinical workflow features',
     stack: ['PHP', 'MySQL', 'JavaScript', 'jQuery', 'Bootstrap'],
-    outcome: 'Add a verified project result or measurable impact here.',
-    flow: ['Patient and cycle records', 'Appointments and treatment steps', 'Investigation results', 'Clinical history and reports'],
+    outcome: 'Kept key IVF care information organized through the patient journey.',
+    flow: ['Patient & cycle', 'Appointments & treatment', 'Investigation results', 'History & reports'],
     preview: { eyebrow: 'CLINICAL WORKFLOW', title: 'Patient journey', type: 'flow' },
     liveUrl: '', githubUrl: '',
   },
@@ -113,6 +113,8 @@ export default function Projects() {
                   <div className="workflow-tags">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
                   <p className="project-field-label">KEY OUTCOME</p>
                   <p className="project-role">{project.outcome}</p>
+                  <p className="project-flow-heading">WORKFLOW</p>
+                  <ol className="project-flow-steps">{project.flow.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span>{step}</li>)}</ol>
                   {links.length > 0 && <div className="project-resource-links">{links.map((link) => <a key={link.label} href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div>}
                 </div>
               </motion.article>
