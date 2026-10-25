@@ -7143,6 +7143,12 @@ textarea:focus-visible {
   }
 }
 
+@media (max-width: 767px) {
+  .project-slide:hover .preview-window {
+    transform: none;
+  }
+}
+
 .journey-card-content h4 {
   color: var(--accent2);
 }

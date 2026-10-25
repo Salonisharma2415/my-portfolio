@@ -59,11 +59,19 @@ const projects = [
 export default function Projects() {
   const [active, setActive] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches)
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { amount: 0.25 })
   const prefersReducedMotion = useReducedMotion()
   const project = projects[active]
   const showProject = (index) => setActive((index + projects.length) % projects.length)
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 767px)')
+    const update = () => setIsMobile(media.matches)
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
 
   useEffect(() => {
     if (!isInView || paused || prefersReducedMotion) return undefined
@@ -89,16 +97,16 @@ export default function Projects() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.08} y={70}>
+        <Reveal delay={0.08} y={isMobile ? 0 : 70}>
           <div className="project-slider" aria-roledescription="carousel" aria-label="Selected project workflows" onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }}>
             <AnimatePresence mode="wait">
               <motion.article
                 key={project.no}
                 className={`project-slide ${project.accent}`}
-                initial={{ opacity: 0, y: 72, scale: 0.975 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -42, scale: 0.985 }}
-                transition={{ duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
+                initial={isMobile ? { opacity: 0 } : { opacity: 0, y: 72, scale: 0.975 }}
+                animate={isMobile ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
+                exit={isMobile ? { opacity: 0 } : { opacity: 0, y: -42, scale: 0.985 }}
+                transition={{ duration: isMobile ? 0.2 : 0.48, ease: [0.22, 1, 0.36, 1] }}
                 aria-live="off"
               >
                 <ProjectPreview project={project} index={active} />
