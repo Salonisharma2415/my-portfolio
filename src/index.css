@@ -7157,19 +7157,99 @@ textarea:focus-visible {
 
 @media (max-width: 600px) {
   .l3-bottom {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
+    align-items: center;
+    padding-bottom: 34px;
   }
 
   .l3-status {
     width: 100%;
     max-width: none;
+    justify-content: center;
   }
 
   .l3-process {
-    width: 100%;
+    display: none;
   }
+}
+
+@media (max-width: 600px) {
+  .sn,
+  .sn.scrolled {
+    padding: 6px 10px;
+  }
+
+  .sn-inner,
+  .sn.scrolled .sn-inner {
+    min-height: 46px;
+    padding: 4px 6px 4px 8px;
+    gap: 7px;
+    border-radius: 13px;
+  }
+
+  .sn-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 9px;
+    font-size: 17px;
+  }
+
+  .sn-wordmark {
+    font-size: 12px;
+  }
+
+  .sn-contact-link {
+    min-height: 32px;
+    padding: 0 8px;
+    font-size: .66rem;
+  }
+
+  .sn-toggle {
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    border-radius: 9px;
+  }
+
+  .sn-toggle span {
+    left: 9px;
+    width: 14px;
+  }
+
+  .sn-toggle span:first-child { top: 12px; }
+  .sn-toggle span:last-child { top: 19px; }
+  .sn-toggle.is-open span:first-child,
+  .sn-toggle.is-open span:last-child { top: 16px; }
+  }
+
+.l3-center-wrap {
+  position: absolute;
+  z-index: 1;
+  top: 47%;
+  left: 50%;
+  width: 126px;
+  height: 126px;
+  display: grid;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.l3-center-mark {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: 100%;
+  transform: none;
+}
+
+@media (max-width: 600px) {
+  .l3-center-wrap {
+    top: 43%;
+    width: 96px;
+    height: 96px;
+  }
+}
 }
 
 .journey-card-content h4 {

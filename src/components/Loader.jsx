@@ -149,7 +149,7 @@ export default function Loader({ onDone }) {
     }
   }, [isMobile])
 
-  const phase = phases[Math.min(Math.floor(count / 25), phases.length - 1)]
+  const phase = isMobile ? 'Welcome' : phases[Math.min(Math.floor(count / 25), phases.length - 1)]
 
   return (
     <motion.div className="l3" exit={isMobile ? { opacity: 0 } : { opacity: 0, scale: 1.025, filter: 'blur(8px)' }} transition={{ duration: 0.72, ease: [0.76, 0, 0.24, 1] }}>
@@ -158,9 +158,11 @@ export default function Loader({ onDone }) {
         <span className="l3-name">Saloni Sharma<span>.</span></span>
         <span className="l3-kicker">SOFTWARE DEVELOPER · PORTFOLIO</span>
       </motion.div>
-      <motion.div className="l3-center-mark" initial={{ opacity: 0, scale: 0.75, rotate: -25 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: 0.25, duration: 1, ease: [0.22, 1, 0.36, 1] }}>
-        <span>S</span><i /><i />
-      </motion.div>
+      <div className="l3-center-wrap">
+        <motion.div className="l3-center-mark" initial={{ opacity: 0, scale: 0.75, rotate: -25 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ delay: 0.25, duration: 1, ease: [0.22, 1, 0.36, 1] }}>
+          <span>S</span><i /><i />
+        </motion.div>
+      </div>
       <div className="l3-bottom">
         <div className="l3-status"><span className="loader-pulse" />{phase}</div>
         <div className="l3-process" aria-label="Portfolio loading progress">
