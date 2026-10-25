@@ -7407,3 +7407,23 @@ textarea:focus-visible {
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
+/* Keep the hero accent restrained and the supporting copy easy to read. */
+.hero h1 .hero-title-line-second em.grad {
+  background: linear-gradient(90deg, #e7efff 0%, #bfd5ff 56%, #91b8fa 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter: drop-shadow(0 0 16px rgba(74, 144, 255, 0.2));
+}
+
+.hero-cover-intro {
+  color: #e5e7eb;
+}
+
+@media (max-width: 767px) {
+  .hero-visual {
+    width: clamp(205px, 56vw, 235px);
+    height: clamp(205px, 56vw, 235px);
+    margin-bottom: -8px;
+  }
+}
