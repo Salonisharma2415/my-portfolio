@@ -1,29 +1,8 @@
 ﻿import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
-import { FiCode } from 'react-icons/fi'
 
 const Hero3D = lazy(() => import('./Hero3D'))
 const technologies = ['PHP', 'JavaScript', 'MySQL', 'jQuery', 'REST APIs']
-
-function HeroCodeMark({ reduced }) {
-  return (
-    <div className="hero-code-mark" aria-hidden="true">
-      <motion.div
-        className="hero-code-orbit hero-code-orbit-one"
-        animate={reduced ? undefined : { rotate: 360 }}
-        transition={{ duration: 48, ease: 'linear', repeat: Infinity }}
-      />
-      <motion.div
-        className="hero-code-orbit hero-code-orbit-two"
-        animate={reduced ? undefined : { rotate: -360 }}
-        transition={{ duration: 36, ease: 'linear', repeat: Infinity }}
-      />
-      <div className="hero-code-core"><FiCode /><span>BUILD / CONNECT / IMPROVE</span></div>
-      <b className="hero-orbit-label hero-orbit-label-one">PHP</b>
-      <b className="hero-orbit-label hero-orbit-label-two">JS</b>
-    </div>
-  )
-}
 
 export default function Hero() {
   const prefersReducedMotion = useReducedMotion()
@@ -37,7 +16,7 @@ export default function Hero() {
     return () => query.removeEventListener('change', update)
   }, [])
 
-  const show3D = desktop && !prefersReducedMotion
+  const simple3D = !desktop || prefersReducedMotion
 
   return (
     <section id="home" className="hero hero-cover-section">
@@ -54,7 +33,7 @@ export default function Hero() {
             animate={prefersReducedMotion ? undefined : { y: [0, -10, 0] }}
             transition={{ duration: 7, ease: 'easeInOut', repeat: Infinity }}
           >
-            {show3D ? <Suspense fallback={null}><Hero3D /></Suspense> : <HeroCodeMark reduced={prefersReducedMotion} />}
+            <Suspense fallback={<div className="hero-3d-placeholder" aria-hidden="true" />}><Hero3D simple={simple3D} /></Suspense>
           </motion.div>
         </motion.div>
 

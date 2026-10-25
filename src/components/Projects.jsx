@@ -67,7 +67,7 @@ export default function Projects() {
 
   useEffect(() => {
     if (!isInView || paused || prefersReducedMotion) return undefined
-    const timer = window.setTimeout(() => showProject(active + 1), 3000)
+    const timer = window.setTimeout(() => showProject(active + 1), 6000)
     return () => window.clearTimeout(timer)
   }, [active, isInView, paused, prefersReducedMotion])
 
@@ -90,7 +90,7 @@ export default function Projects() {
         </Reveal>
 
         <Reveal delay={0.08} y={70}>
-          <div className="project-slider" aria-roledescription="carousel" aria-label="Selected project workflows" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }}>
+          <div className="project-slider" aria-roledescription="carousel" aria-label="Selected project workflows" onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }}>
             <AnimatePresence mode="wait">
               <motion.article
                 key={project.no}

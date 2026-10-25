@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { FiShare2 } from 'react-icons/fi'
 import { SiBootstrap, SiCss, SiGit, SiJavascript, SiJquery, SiMysql, SiPhp } from 'react-icons/si'
@@ -19,15 +19,30 @@ export default function Skills() {
   const [active, setActive] = useState(skills[0])
   const prefersReducedMotion = useReducedMotion()
 
+  useEffect(() => {
+    if (prefersReducedMotion) return undefined
+    const activeIndex = skills.findIndex((skill) => skill.name === active.name)
+    const timer = window.setTimeout(() => setActive(skills[(activeIndex + 1) % skills.length]), 10000)
+    return () => window.clearTimeout(timer)
+  }, [active, prefersReducedMotion])
+
   return (
     <section id="skills" className="skills-section">
       <div className="container">
         <Reveal>
           <div className="skills-heading">
-            <div><p className="tag">THE TOOLS I WORK WITH</p><h2 className="section-title">My technology <span>stack.</span></h2></div>
+            <div><p className="tag">THE TOOLS I WORK WITH</p><h2 className="section-title">My <span className="technology-accent">technology</span> <span>stack.</span></h2></div>
             <p className="skills-intro">A few of the languages and tools I use across my projects. Choose one to see where it fits.</p>
           </div>
         </Reveal>
+
+        <div className="skills-mini-slider" aria-label="Browse technologies">
+          {skills.map((skill) => (
+            <button key={skill.name} type="button" className={active.name === skill.name ? 'active' : ''} aria-pressed={active.name === skill.name} onClick={() => setActive(skill)}>
+              {skill.name}
+            </button>
+          ))}
+        </div>
 
         <div className="skills-orbit-layout">
           <div className="skills-orbit-scene" aria-label="Rotating orbit of technologies">

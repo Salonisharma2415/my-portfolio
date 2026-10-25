@@ -56,7 +56,7 @@ function createGlobeLines(radius, lat = 9, lon = 14, segments = 64) {
   return { group, material, geometries }
 }
 
-export default function Hero3D() {
+export default function Hero3D({ simple = false }) {
   const mountRef = useRef(null)
 
   useEffect(() => {
@@ -77,7 +77,7 @@ export default function Hero3D() {
     scene.add(group)
 
     // 1) Globe (lavender wireframe)
-    const globe = createGlobeLines(1.0)
+    const globe = createGlobeLines(1.0, simple ? 7 : 9, simple ? 10 : 14, simple ? 40 : 64)
     group.add(globe.group)
 
     // 2) Glowing core
@@ -144,7 +144,7 @@ export default function Hero3D() {
     ring2.rotation.y = Math.PI * 0.22
     group.add(ring2)
 
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5))
+    renderer.setPixelRatio(simple ? 1 : Math.min(window.devicePixelRatio || 1, 1.5))
     renderer.setClearColor(0x000000, 0)
     mount.replaceChildren(renderer.domElement)
 
@@ -153,6 +153,7 @@ export default function Hero3D() {
       renderer.setSize(size, size, false)
       camera.aspect = 1
       camera.updateProjectionMatrix()
+      if (simple) renderer.render(scene, camera)
     }
     const observer = new ResizeObserver(resize)
     observer.observe(mount)
@@ -176,7 +177,8 @@ export default function Hero3D() {
 
       renderer.render(scene, camera)
     }
-    animate()
+    if (!simple) animate()
+    else renderer.render(scene, camera)
 
     return () => {
       window.cancelAnimationFrame(frame)
@@ -198,7 +200,7 @@ export default function Hero3D() {
       renderer.dispose()
       mount.replaceChildren()
     }
-  }, [])
+  }, [simple])
 
   return <div ref={mountRef} className="hero-3d" aria-hidden="true" />
 }

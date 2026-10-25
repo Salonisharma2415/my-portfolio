@@ -24,7 +24,7 @@ export default function About() {
 
   useEffect(() => {
     if (!isInView || paused || prefersReducedMotion) return undefined
-    const timer = window.setTimeout(() => changeSlide(1), 3000)
+    const timer = window.setTimeout(() => changeSlide(1), 6000)
     return () => window.clearTimeout(timer)
   }, [active, isInView, paused, prefersReducedMotion])
 
@@ -63,7 +63,7 @@ export default function About() {
               <div><p className="tag">EDUCATION & EXPERIENCE</p><h3>My journey <span>so far.</span></h3></div>
               <p>Swipe through the milestones that shaped my path.</p>
             </div>
-            <div className="journey-slider" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }} onTouchStart={() => setPaused(true)} onTouchEnd={() => setPaused(false)}>
+            <div className="journey-slider" onFocusCapture={() => setPaused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false) }} onTouchStart={() => setPaused(true)} onTouchEnd={() => setPaused(false)}>
               <div className="journey-rail" aria-hidden="true"><span style={{ transform: `translateX(${active * 100}%)` }} /></div>
               <div className="journey-card-window">
                 <AnimatePresence mode="wait" initial={false}>
