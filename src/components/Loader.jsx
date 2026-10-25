@@ -9,6 +9,14 @@ export default function Loader({ onDone }) {
   const progress = useRef(0)
   const exitAt = useRef(0)
   const [count, setCount] = useState(0)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 600px)').matches)
+
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 600px)')
+    const update = () => setIsMobile(query.matches)
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
+  }, [])
 
   useEffect(() => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -112,7 +120,7 @@ export default function Loader({ onDone }) {
       geometry.attributes.position.needsUpdate = true
       particles.rotation.y = time * 0.28
       particles.rotation.x = Math.sin(time * 0.35) * 0.22
-      if (exitAt.current) camera.position.z = 8 - Math.min(1, (performance.now() - exitAt.current) / 700) * 2.2
+      if (exitAt.current && !isMobile) camera.position.z = 8 - Math.min(1, (performance.now() - exitAt.current) / 700) * 2.2
       renderer.render(scene, camera)
       frame = requestAnimationFrame(tick)
     }
@@ -139,12 +147,12 @@ export default function Loader({ onDone }) {
       disposed = true
       cleanupScene()
     }
-  }, [])
+  }, [isMobile])
 
   const phase = phases[Math.min(Math.floor(count / 25), phases.length - 1)]
 
   return (
-    <motion.div className="l3" exit={{ opacity: 0, scale: 1.025, filter: 'blur(8px)' }} transition={{ duration: 0.72, ease: [0.76, 0, 0.24, 1] }}>
+    <motion.div className="l3" exit={isMobile ? { opacity: 0 } : { opacity: 0, scale: 1.025, filter: 'blur(8px)' }} transition={{ duration: 0.72, ease: [0.76, 0, 0.24, 1] }}>
       <div ref={mountRef} className="l3-canvas" />
       <motion.div className="l3-top" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.7 }}>
         <span className="l3-name">Saloni Sharma<span>.</span></span>
