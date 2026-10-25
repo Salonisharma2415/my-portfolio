@@ -7156,6 +7156,54 @@ textarea:focus-visible {
 }
 
 @media (max-width: 600px) {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .sn,
+  .sn.scrolled {
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .sn-inner,
+  .sn.scrolled .sn-inner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .sn-contact-link {
+    display: none;
+  }
+
+  .hero-cover-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    padding-inline: 20px;
+  }
+
+  .hero-cover {
+    width: 100%;
+    max-width: 520px;
+    min-width: 0;
+    margin-inline: auto;
+  }
+
+  .hero-cover h1,
+  .hero-cover-intro {
+    max-width: 100%;
+  }
+
   .l3-bottom {
     align-items: center;
     padding-bottom: 34px;
@@ -7249,7 +7297,6 @@ textarea:focus-visible {
     width: 96px;
     height: 96px;
   }
-}
 }
 
 .journey-card-content h4 {
