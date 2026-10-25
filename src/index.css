@@ -2193,11 +2193,12 @@ h3,
 }
 
 .hero-live-dot {
+  display: inline-block;
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #87e3bb;
-  box-shadow: 0 0 14px rgba(135, 227, 187, .8);
+  background: #70dda5;
+  box-shadow: 0 0 14px rgba(112, 221, 165, .8);
 }
 
 .hero-title-wrap {
@@ -7410,10 +7411,10 @@ textarea:focus-visible {
 
 /* Keep the hero accent restrained and the supporting copy easy to read. */
 .hero h1 .hero-title-line-second em.grad {
-  background: linear-gradient(90deg, #e7efff 0%, #bfd5ff 56%, #91b8fa 100%);
+  background: linear-gradient(90deg, #f2f5fb 0%, #dce7f8 58%, #a9c8f5 100%);
   background-clip: text;
   -webkit-background-clip: text;
-  filter: drop-shadow(0 0 16px rgba(74, 144, 255, 0.2));
+  filter: drop-shadow(0 0 12px rgba(74, 144, 255, 0.12));
 }
 
 .hero-cover-intro {
@@ -7422,8 +7423,8 @@ textarea:focus-visible {
 
 @media (max-width: 767px) {
   .hero-visual {
-    width: clamp(205px, 56vw, 235px);
-    height: clamp(205px, 56vw, 235px);
-    margin-bottom: -8px;
+    width: clamp(230px, 66vw, 260px);
+    height: clamp(230px, 66vw, 260px);
+    margin-bottom: -30px;
   }
 }

@@ -23,7 +23,7 @@ export default function Hero() {
       <div className="hero-ambient" aria-hidden="true" />
       <motion.div className="hero-cover" initial="hidden" animate="show">
         <motion.p className="tag hero-cover-eyebrow" variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { delay: 0.12 } } }}>
-          <span className="hero-live-dot" /> PORTFOLIO / 2026
+          <span className="hero-live-dot" /> SOFTWARE FOR REAL WORKFLOWS
         </motion.p>
 
         <motion.div className="hero-visual" variants={{ hidden: { opacity: 0, y: 20, scale: 0.94 }, show: { opacity: 1, y: 0, scale: 1, transition: { delay: 0.22, duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }}>
@@ -43,7 +43,7 @@ export default function Hero() {
           <motion.span className="hero-title-line hero-title-line-second" initial={{ opacity: 0, x: 70 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.55, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}><em className="grad">SOFTWARE.</em></motion.span>
         </motion.h1>
         <motion.p className="hero-cover-intro" variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { delay: 0.72, duration: 0.7 } } }}>
-          I build software that solves real problems across healthcare, property management and everyday business workflows.
+          I solve real problems across healthcare, property management and everyday business workflows.
         </motion.p>
         <motion.div className="hero-cover-actions" variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { delay: 0.9 } } }}>
           <a href="#projects" className="btn primary">Explore my work <span aria-hidden="true">↓</span></a>
