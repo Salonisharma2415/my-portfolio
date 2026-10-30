@@ -1,12 +1,33 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useInView, useReducedMotion } from 'framer-motion'
 import ProfilePortrait from './ProfilePortrait'
 import Reveal from './Reveal'
 
 const journey = [
-  { number: '01', kind: 'EDUCATION · COMPLETED', title: 'Bachelor of Computer Applications', short: 'BCA', description: 'Completed my BCA at MPGC Government College, Amb, building a foundation in computer applications and software development.', marker: 'BCA' },
-  { number: '02', kind: 'EDUCATION · IN PROGRESS', title: 'Master of Computer Applications', short: 'MCA', description: 'Currently pursuing my MCA and continuing to grow my understanding of software, systems and the way technology solves real problems.', marker: 'MCA' },
-  { number: '03', kind: 'PROFESSIONAL EXPERIENCE', title: '1.5 years of building software', short: '1.5 YEARS', description: 'Hands-on experience across healthcare, property management and business operations, turning day-to-day processes into useful application workflows.', marker: 'WORK' },
+  {
+    number: '01',
+    kind: 'EDUCATION · COMPLETED',
+    title: 'Bachelor of Computer Applications (BCA)',
+    short: 'BCA',
+    description: 'Graduated from MPGC Government College, Amb with a strong foundation in computer science and software development.',
+    marker: 'BCA'
+  },
+  {
+    number: '02',
+    kind: 'PROFESSIONAL EXPERIENCE · 1.5 YEARS',
+    title: 'Software Developer & Systems Builder',
+    short: 'WORK',
+    description: 'Hands-on experience building full-cycle enterprise software solutions — including healthcare (Smart HMS, IVF), property management (PMS), and purchase-to-dispatch operations.',
+    marker: 'WORK'
+  },
+  {
+    number: '03',
+    kind: 'EDUCATION · IN PROGRESS',
+    title: 'Master of Computer Applications (MCA)',
+    short: 'MCA',
+    description: 'Currently pursuing MCA to deepen my expertise in system architecture, database optimization, and scalable software design.',
+    marker: 'MCA'
+  },
 ]
 
 export default function About() {
@@ -49,11 +70,17 @@ export default function About() {
             <span className="portrait-caption">SALONI SHARMA · SOFTWARE DEVELOPER</span>
           </div>
           <div className="about-bio">
-            <p className="tag">THE PERSON BEHIND THE PROJECTS</p>
+            <p className="tag">THE DEVELOPER BEHIND THE SYSTEMS</p>
             <h2>Hi, I’m <span>Saloni Sharma.</span></h2>
-            <p className="about-bio-lead">I’m a software developer who enjoys learning by building.</p>
-            <p className="about-bio-copy">I’ve worked on healthcare, property management and store operations software, helping make everyday workflows easier to follow.</p>
-            <a href="#projects" className="about-link">See what I’ve been building <span aria-hidden="true">↘</span></a>
+            <p className="about-bio-lead">
+              Software Developer with 1.5+ years of hands-on experience building core enterprise workflows.
+            </p>
+            <p className="about-bio-copy">
+              I specialize in developing end-to-end software for complex operations like hospital management (Smart HMS, IVF), property management systems (PMS), and store purchase-to-dispatch tracking.
+            </p>
+            <a href="#projects" className="about-link">
+              See what I’ve been building <span aria-hidden="true">↘</span>
+            </a>
           </div>
         </motion.article>
 

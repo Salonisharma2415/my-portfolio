@@ -6361,15 +6361,15 @@ textarea:focus-visible {
 @media (min-width:900px) {
   .hero-cover-section {
     min-height: 100svh;
-    padding: 130px clamp(32px, 7vw, 110px) 82px;
+    padding: 130px 0 82px;
   }
 
   .hero-cover {
-    width: min(100%, 1120px);
+    width: min(calc(100% - 48px), 1150px);
     display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(240px, .8fr);
+    grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr);
     grid-template-areas: "eyebrow visual" "name visual" "title visual" "intro visual" "actions visual" "tech visual";
-    column-gap: clamp(24px, 5vw, 76px);
+    column-gap: clamp(40px, 7vw, 112px);
     align-content: center;
     justify-items: start;
     text-align: left;
@@ -6381,7 +6381,7 @@ textarea:focus-visible {
 
   .hero-visual {
     grid-area: visual;
-    width: min(100%, 340px);
+    width: min(100%, 520px);
     height: auto;
     aspect-ratio: 1;
     align-self: center;
@@ -6409,7 +6409,7 @@ textarea:focus-visible {
   .hero-cover h1 {
     grid-area: title;
     width: 100%;
-    font-size: clamp(3.15rem, 5.4vw, 5.2rem);
+    font-size: clamp(3.4rem, 5.2vw, 6rem);
     line-height: .94;
   }
 
@@ -6431,12 +6431,12 @@ textarea:focus-visible {
 
 @media (min-width:900px) and (max-width:1150px) {
   .hero-cover {
-    grid-template-columns: minmax(0, 1.15fr) minmax(210px, .75fr);
-    column-gap: 28px;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+    column-gap: 36px;
   }
 
   .hero-visual {
-    width: min(100%, 280px);
+    width: min(100%, 360px);
   }
 
   .hero-cover h1 {

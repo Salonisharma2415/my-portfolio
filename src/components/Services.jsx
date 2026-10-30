@@ -2,11 +2,35 @@ import { FiActivity, FiHome, FiPackage, FiBarChart2 } from 'react-icons/fi'
 import Reveal from './Reveal'
 
 const services = [
-  { no: '01', icon: <FiActivity />, title: 'Healthcare workflows', description: 'Patient journeys, investigations, lab results, pharmacy and inventory brought together in clear hospital modules.', tags: ['HMS', 'Pharmacy', 'IVF'] },
-  { no: '02', icon: <FiHome />, title: 'Property management', description: 'Property and unit records with owner or tenant occupancy, rental status, customer details and receipts.', tags: ['Units', 'Occupancy', 'Receipts'] },
-  { no: '03', icon: <FiPackage />, title: 'Purchase to dispatch', description: 'A connected product path from purchase orders and receiving through store inventory and dispatch.', tags: ['Purchasing', 'Store', 'Dispatch'] },
-  { no: '04', icon: <FiBarChart2 />, title: 'Interfaces & reporting', description: 'Responsive screens, useful data views and reports that help teams understand the work in progress.', tags: ['Responsive UI', 'Reports', 'APIs'] },
-]
+  {
+    no: '01',
+    title: 'Database Architecture',
+    description: 'Designing structured relational database schemas in MySQL, managing operational records, and optimizing queries for fast data retrieval.',
+    icon: <FiActivity />,
+    tags: ['MySQL', 'Schemas', 'Queries']
+  },
+  {
+    no: '02',
+    title: 'Frontend & UI Development',
+    description: 'Building responsive, user-friendly interfaces and dynamic forms using JavaScript, jQuery, and Bootstrap for smooth user workflows.',
+    icon: <FiHome />,
+    tags: ['JavaScript', 'jQuery', 'Bootstrap']
+  },
+  {
+    no: '03',
+    title: 'Backend Business Logic',
+    description: 'Writing secure server-side logic in PHP and developing REST APIs to connect frontend screens seamlessly with backend operations.',
+    icon: <FiPackage />,
+    tags: ['PHP', 'REST APIs', 'Server-side']
+  },
+  {
+    no: '04',
+    title: 'Version Control & Git',
+    description: 'Tracking code changes, managing repository branches, and safely merging features using Git for clean and organized collaboration.',
+    icon: <FiBarChart2 />,
+    tags: ['Git', 'Branching', 'Merging']
+  }
+];
 
 export default function Services() {
   return (

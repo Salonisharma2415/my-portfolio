@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { FiShare2 } from 'react-icons/fi'
-import { SiBootstrap, SiCss, SiGit, SiJavascript, SiJquery, SiMysql, SiPhp } from 'react-icons/si'
+import { SiBootstrap, SiCss, SiDocker, SiGit, SiJavascript, SiJquery, SiMysql, SiPhp, SiReact } from 'react-icons/si'
 import Reveal from './Reveal'
 
 const skills = [
   { name: 'PHP', Icon: SiPhp, color: '#8892bf', category: 'Backend - Server-side language', detail: 'Building server-side features and business logic.' },
   { name: 'JavaScript', Icon: SiJavascript, color: '#f0db4f', category: 'Frontend - Programming language', detail: 'Adding useful interactions to everyday workflows.' },
+  { name: 'React JS', Icon: SiReact, color: '#61dafb', category: 'Frontend - UI library', detail: 'Building interactive, component-based user interfaces.' },
   { name: 'MySQL', Icon: SiMysql, color: '#46a6c7', category: 'Data - Relational database', detail: 'Working with relational data and operational records.' },
   { name: 'jQuery', Icon: SiJquery, color: '#78bdf2', category: 'Frontend - UI library', detail: 'Creating dynamic forms and responsive UI behavior.' },
   { name: 'Bootstrap', Icon: SiBootstrap, color: '#ae8bff', category: 'Frontend - UI framework', detail: 'Building layouts that adapt across screen sizes.' },
   { name: 'CSS3', Icon: SiCss, color: '#69a9ff', category: 'Frontend - Styling', detail: 'Crafting page layouts, visual details and motion.' },
   { name: 'REST APIs', Icon: FiShare2, color: '#72c8d8', category: 'Integration - APIs', detail: 'Connecting application screens with backend services.' },
   { name: 'Git', Icon: SiGit, color: '#f07861', category: 'Tools - Version control', detail: 'Tracking changes and collaborating on code.' },
+  { name: 'Docker', Icon: SiDocker, color: '#2496ed', category: 'Tools - Containerization', detail: 'Packaging applications and their dependencies into portable containers.' },
 ]
 
 export default function Skills() {
