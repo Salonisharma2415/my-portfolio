@@ -6365,11 +6365,11 @@ textarea:focus-visible {
   }
 
   .hero-cover {
-    width: min(calc(100% - 48px), 1150px);
+    width: min(calc(100% - clamp(48px, 10vw, 192px)), 1600px);
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr);
+    grid-template-columns: minmax(0, 1fr) minmax(440px, .95fr);
     grid-template-areas: "eyebrow visual" "name visual" "title visual" "intro visual" "actions visual" "tech visual";
-    column-gap: clamp(40px, 7vw, 112px);
+    column-gap: clamp(48px, 5vw, 96px);
     align-content: center;
     justify-items: start;
     text-align: left;
@@ -6381,7 +6381,7 @@ textarea:focus-visible {
 
   .hero-visual {
     grid-area: visual;
-    width: min(100%, 520px);
+    width: min(100%, clamp(520px, 34vw, 680px));
     height: auto;
     aspect-ratio: 1;
     align-self: center;
@@ -6409,7 +6409,7 @@ textarea:focus-visible {
   .hero-cover h1 {
     grid-area: title;
     width: 100%;
-    font-size: clamp(3.4rem, 5.2vw, 6rem);
+    font-size: clamp(3.4rem, 5.2vw, 7rem);
     line-height: .94;
   }
 
