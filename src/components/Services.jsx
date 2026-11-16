@@ -1,34 +1,48 @@
-import { FiActivity, FiHome, FiPackage, FiBarChart2 } from 'react-icons/fi'
+import { FiActivity, FiHome, FiPackage, FiLayers, FiShuffle } from 'react-icons/fi'
 import Reveal from './Reveal'
 
 const services = [
   {
     no: '01',
     title: 'Database Architecture',
-    description: 'Designing structured relational database schemas in MySQL, managing operational records, and optimizing queries for fast data retrieval.',
+    description: 'Structuring relational data and operational records for applications and business workflows in MySQL and PostgreSQL.',
     icon: <FiActivity />,
     tags: ['MySQL', 'Schemas', 'Queries']
   },
   {
     no: '02',
-    title: 'Frontend & UI Development',
-    description: 'Building responsive, user-friendly interfaces and dynamic forms using JavaScript, jQuery, and Bootstrap for smooth user workflows.',
+    title: 'Full-Stack Development',
+    description: 'Building application features across PHP backends, relational data, and responsive interfaces with JavaScript, React, jQuery, and Bootstrap.',
     icon: <FiHome />,
-    tags: ['JavaScript', 'jQuery', 'Bootstrap']
+    tags: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap']
   },
   {
     no: '03',
-    title: 'Backend Business Logic',
-    description: 'Writing secure server-side logic in PHP and developing REST APIs to connect frontend screens seamlessly with backend operations.',
+    title: 'Backend Development',
+    description: 'Writing server-side logic in PHP with CakePHP 5 or Laravel, and developing REST APIs for application workflows.',
     icon: <FiPackage />,
-    tags: ['PHP', 'REST APIs', 'Server-side']
+    tags: ['PHP', 'CakePHP 5', 'Laravel']
   },
   {
     no: '04',
-    title: 'Version Control & Git',
-    description: 'Tracking code changes, managing repository branches, and safely merging features using Git for clean and organized collaboration.',
-    icon: <FiBarChart2 />,
-    tags: ['Git', 'Branching', 'Merging']
+    title: 'REST API Development',
+    description: 'Building API endpoints and connecting application interfaces with server-side operations.',
+    icon: <FiShuffle />,
+    tags: ['REST APIs', 'PHP', 'Integration']
+  },
+  {
+    no: '05',
+    title: 'Business Workflow Automation',
+    description: 'Turning repeatable operational steps into connected digital workflows for healthcare, inventory, and business operations.',
+    icon: <FiActivity />,
+    tags: ['Healthcare', 'Inventory', 'Operations']
+  },
+  {
+    no: '06',
+    title: 'System Integration',
+    description: 'Connecting application modules and data flows so information can move between related parts of a system.',
+    icon: <FiLayers />,
+    tags: ['APIs', 'Application modules', 'Data flows']
   }
 ];
 

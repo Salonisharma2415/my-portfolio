@@ -35,6 +35,7 @@ export default function About() {
   const [paused, setPaused] = useState(false)
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { amount: 0.25 })
+  const hasEntered = useInView(sectionRef, { amount: 0.12, once: true })
   const prefersReducedMotion = useReducedMotion()
   const changeSlide = (direction) => setActive((current) => (current + direction + journey.length) % journey.length)
   const handleDragEnd = (_, info) => {
@@ -50,7 +51,7 @@ export default function About() {
   }, [active, isInView, paused, prefersReducedMotion])
 
   return (
-    <section id="about" className="about-section" ref={sectionRef}>
+    <section id="about" className={`about-section${hasEntered ? ' is-entered' : ''}`} ref={sectionRef}>
       <div className="container">
         <div className="about-wordstage" aria-label="Always learning, always building">
           <motion.p className="about-word about-word-one" initial={{ opacity: 0, x: -90 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>ALWAYS</motion.p>
@@ -60,10 +61,10 @@ export default function About() {
 
         <motion.article
           className="about-profile-panel"
-          initial={{ opacity: 0, y: 105, scale: 0.97, clipPath: 'inset(18% 0 0 0 round 22px)' }}
-          whileInView={{ opacity: 1, y: 0, scale: 1, clipPath: 'inset(0% 0 0 0 round 22px)' }}
+          initial={{ opacity: 0, y: 28, scale: 0.99 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true, amount: 0.18 }}
-          transition={{ duration: 1, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.72, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="about-portrait-column">
             <ProfilePortrait />
@@ -75,6 +76,11 @@ export default function About() {
             <p className="about-bio-lead">
               Software Developer with 1.5+ years of hands-on experience building core enterprise workflows.
             </p>
+            <div className="about-highlights" aria-label="Professional highlights">
+              <div><strong>1.5 years</strong><span>hands-on development</span></div>
+              <div><strong>Healthcare</strong><span>and business workflows</span></div>
+              <div><strong>BCA · MCA</strong><span>graduate · in progress</span></div>
+            </div>
             <p className="about-bio-copy">
               I specialize in developing end-to-end software for complex operations like hospital management (Smart HMS, IVF), property management systems (PMS), and store purchase-to-dispatch tracking.
             </p>

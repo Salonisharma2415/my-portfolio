@@ -9,7 +9,7 @@ const projects = [
     problem: 'Managing patient records, lab investigations, pharmacy billing, and inventory tracking manually across multiple hospital departments.',
     role: 'Developed end-to-end clinical workflows connecting patient registration, lab investigations, automated pharmacy billing, and stock reports.',
     stack: ['PHP', 'MySQL', 'JavaScript', 'REST APIs', 'Git'],
-    outcome: 'Streamlined patient journey from consultation to dispensary, reducing manual errors and improving daily hospital workflow speed.',
+    outcome: 'Workflow scope: patient registration, lab investigations, pharmacy billing, stock reports, and inventory tracking.',
     flow: ['Patient Registration', 'Investigations & Lab', 'Pharmacy & Billing', 'Inventory & Reports'],
     preview: { eyebrow: 'HOSPITAL OPERATIONS', title: 'Patient workflow', type: 'flow' },
     liveUrl: '', githubUrl: '',
@@ -19,7 +19,7 @@ const projects = [
     problem: 'Tracking units, occupancy, tenants, rental receipts, electricity, and maintenance charges across property associations.',
     role: 'Built unit tracking, owner-tenant mapping, rental payment status, and automated receipt generation features.',
     stack: ['PHP', 'MySQL', 'JavaScript', 'jQuery', 'Bootstrap'],
-    outcome: 'Centralized unit occupancy and financial tracking, making monthly rent and utility audits effortless.',
+    outcome: 'Workflow scope: unit occupancy, owner and tenant records, rent and utility charges, and receipt generation.',
     flow: ['Property Units', 'Owner / Tenant Status', 'CAM & Electricity Charges', 'Receipts & Reports'],
     preview: { eyebrow: 'PROPERTY MANAGEMENT', title: 'Unit occupancy', type: 'units', items: ['A-12 · Owner occupied', 'A-14 · Rented', 'B-03 · Tenant', 'B-04 · Available'] },
     liveUrl: '', githubUrl: '',
@@ -29,7 +29,7 @@ const projects = [
     problem: 'Tracking products from initial purchase orders through store stock, panel production stages, inspection, and dispatch.',
     role: 'Engineered purchase order tracking, goods received notes, store stock management, scrap/issue indents, and dispatch status.',
     stack: ['PHP', 'MySQL', 'JavaScript', 'jQuery', 'Bootstrap'],
-    outcome: 'Created a fully traceable lifecycle from procurement to final dispatch, eliminating inventory discrepancies.',
+    outcome: 'Workflow scope: purchase orders, goods received, store stock, inspection, and dispatch tracking.',
     flow: ['Purchase Order', 'Goods Received', 'Store Inventory', 'Inspection & Dispatch'],
     preview: { eyebrow: 'PURCHASE & STORE', title: 'Product lifecycle', type: 'flow' },
     liveUrl: '', githubUrl: '',
@@ -39,7 +39,7 @@ const projects = [
     problem: 'Managing high-volume pharmacy stock, sales entries, purchase tracking, and GST/Non-GST tax reporting.',
     role: 'Developed pharmacy sales/purchase workflows, stock issues, scrap management, and automated GST billing reports.',
     stack: ['PHP', 'MySQL', 'JavaScript', 'REST APIs', 'Git'],
-    outcome: 'Linked medicine purchases with live stock updates and tax compliant sales reports.',
+    outcome: 'Workflow scope: medicine purchases, stock updates, sales entries, and GST / non-GST reports.',
     flow: ['Medicine Purchase', 'Stock & Issue Indents', 'Sales & Billing', 'GST / Non-GST Reports'],
     preview: { eyebrow: 'PHARMACY OPERATIONS', title: 'Medicine workflow', type: 'flow' },
     liveUrl: '', githubUrl: '',
@@ -49,7 +49,7 @@ const projects = [
     problem: 'Managing complex multi-stage IVF patient cycles, clinical investigations, and secure donor data records.',
     role: 'Developed specialized clinical workflows including patient cycle tracking, treatment appointments, and secure donor profile management.',
     stack: ['PHP', 'MySQL', 'JavaScript', 'REST APIs', 'Git'],
-    outcome: 'Centralized complete patient and donor journey tracking, ensuring strict confidentiality and streamlined clinical operations.',
+    outcome: 'Workflow scope: patient cycle tracking, appointments, investigations, and donor profile records.',
     flow: ['Patient & cycle', 'Donor data & screening', 'Treatments & investigations', 'History & reports'],
     preview: { eyebrow: 'CLINICAL WORKFLOW', title: 'Patient & donor journey', type: 'flow' },
     liveUrl: '', githubUrl: '',
@@ -62,6 +62,7 @@ export default function Projects() {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches)
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { amount: 0.25 })
+  const hasEntered = useInView(sectionRef, { amount: 0.12, once: true })
   const prefersReducedMotion = useReducedMotion()
   const project = projects[active]
   const showProject = (index) => setActive((index + projects.length) % projects.length)
@@ -85,7 +86,7 @@ export default function Projects() {
   ].filter(Boolean)
 
   return (
-    <section id="projects" className="work-section project-slider-section" ref={sectionRef}>
+    <section id="projects" className={`work-section project-slider-section${hasEntered ? ' is-entered' : ''}`} ref={sectionRef}>
       <div className="container">
         <Reveal>
           <div className="work-heading">
@@ -119,7 +120,7 @@ export default function Projects() {
                   <p className="project-role">{project.role}</p>
                   <p className="project-field-label">TECH STACK</p>
                   <div className="workflow-tags">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  <p className="project-field-label">KEY OUTCOME</p>
+                  <p className="project-field-label">WORKFLOW SCOPE</p>
                   <p className="project-role">{project.outcome}</p>
                   <p className="project-flow-heading project-mobile-workflow">WORKFLOW</p>
                   <ol className="project-flow-steps project-mobile-workflow">{project.flow.map((step, index) => <li key={step}><span>{String(index + 1).padStart(2, '0')}</span>{step}</li>)}</ol>

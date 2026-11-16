@@ -1,45 +1,60 @@
-const hospitalSteps = ['Patient', 'Investigation', 'Lab result', 'Pharmacy']
+const results = [
+  { name: 'Blood test', status: 'Ready', tone: 'ready' },
+  { name: 'Chest X-ray', status: 'Ready', tone: 'ready' },
+  { name: 'Lipid profile', status: 'Processing', tone: 'processing' },
+]
+
+const codeLines = [
+  <><span className="api-keyword">&lt;?php</span></>,
+  <><span className="api-variable">$statement</span> = <span className="api-variable">$pdo</span>-&gt;prepare(</>,
+  <><span className="api-string">'SELECT * FROM lab_results</span></>,
+  <><span className="api-string">  WHERE patient_id = ?'</span></>,
+  <span>);</span>,
+  <><span className="api-variable">$statement</span>-&gt;execute([<span className="api-variable">$patientId</span>]);</>,
+  <><span className="api-keyword">echo</span> <span className="api-function">json_encode</span>([</>,
+  <><span className="api-string">  'status'</span> =&gt; <span className="api-string">'success'</span>,</>,
+  <><span className="api-string">  'items'</span> =&gt; <span className="api-variable">$statement</span>-&gt;fetchAll(PDO::FETCH_ASSOC),</>,
+  <span>]);</span>,
+]
 
 export default function WorkflowVisual() {
   return (
-    <div className="workflow-visual" role="img" aria-label="Illustration of connected hospital, property management and purchase-to-dispatch workflows">
-      <div className="visual-grid" />
-      <div className="visual-orbit visual-orbit-one" />
-      <div className="visual-orbit visual-orbit-two" />
-
-      <div className="visual-card hms-card">
-        <div className="visual-card-head">
-          <div className="visual-brand"><span className="visual-brand-icon">H</span><div><b>Smart HMS</b><small>CONNECTED CARE FLOW</small></div></div>
-          <span className="visual-live"><i /> WORKFLOW</span>
+    <div className="api-system-visual" role="group" aria-label="Example PHP lab results API and related software workflows">
+      <div className="api-window">
+        <div className="api-window-bar">
+          <div className="api-window-dots" aria-hidden="true"><i /><i /><i /></div>
+          <span className="api-window-title">GET /api/lab-results/42</span>
+          <span className="api-live"><i /> Live</span>
         </div>
-        <div className="visual-card-title"><span>Hospital operations</span><b>01 / 03</b></div>
-        <div className="hospital-flow">
-          {hospitalSteps.map((step, index) => (
-            <div className="hospital-flow-step" key={step}>
-              <span className={`flow-node node-${index + 1}`}>{['＋', '⌕', '↗', '✚'][index]}</span>
-              <b>{step}</b>
-              {index < hospitalSteps.length - 1 && <span className="flow-connector" />}
-            </div>
-          ))}
+        <div className="api-editor">
+          <aside className="api-editor-rail" aria-hidden="true"><span className="active">⌘</span><span>⌕</span><span>▤</span><span>⋯</span></aside>
+          <div className="api-code" aria-label="PHP prepared statement example">
+          <pre><code>{codeLines.map((line, index) => (
+            <span className="api-code-line" key={index}><span className="api-line-number">{String(index + 1).padStart(2, '0')}</span><span className="api-code-content">{line}</span></span>
+          ))}</code></pre>
+          </div>
         </div>
-        <div className="visual-card-footer"><span>Inventory & reports connect across the journey</span><span className="footer-spark">✳</span></div>
+        <div className="api-response">
+          <div className="api-response-meta">
+            <span className="api-response-status">200 OK</span>
+            <span>38 ms</span>
+            <span>application/json</span>
+          </div>
+          <ul className="api-results" aria-label="Lab result response examples">
+            {results.map((result, index) => (
+              <li className="api-result-row" key={result.name} style={{ '--result-index': index }}>
+                <span className="api-result-name">{result.name}</span>
+                <span className={'api-result-status ' + result.tone}><i />{result.status}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-
-      <div className="visual-card pms-card">
-        <div className="mini-card-top"><span className="mini-icon purple">⌂</span><span className="mini-label">PROPERTY MANAGEMENT</span></div>
-        <b className="mini-title">PMS portfolio</b>
-        <div className="mini-tags"><span>Units</span><span>Occupancy</span><span>Receipts</span></div>
-        <div className="mini-meter"><i /></div>
-        <small>Owner · Tenant · Rented</small>
+      <div className="api-domain-row" aria-label="Software domains">
+        <div><strong>Healthcare</strong><span>Lab results, pharmacy, records</span></div>
+        <div><strong>Property</strong><span>Units, occupancy, receipts</span></div>
+        <div><strong>Store ops</strong><span>Purchase order to dispatch</span></div>
       </div>
-
-      <div className="visual-card purchase-card">
-        <div className="mini-card-top"><span className="mini-icon amber">↗</span><span className="mini-label">STORE OPERATIONS</span></div>
-        <b className="mini-title">Purchase to dispatch</b>
-        <div className="purchase-flow"><span>PO</span><i /><span>Store</span><i /><span>Dispatch</span></div>
-      </div>
-
-      <div className="visual-caption"><span className="caption-pulse" /> SYSTEMS THAT KEEP WORK MOVING</div>
     </div>
   )
 }

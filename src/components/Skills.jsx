@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { FiShare2 } from 'react-icons/fi'
-import { SiBootstrap, SiCss, SiDocker, SiGit, SiJavascript, SiJquery, SiMysql, SiPhp, SiReact } from 'react-icons/si'
+import { SiBootstrap, SiCss, SiDocker, SiGit, SiJavascript, SiJquery, SiMysql, SiPhp, SiReact, SiCakephp } from 'react-icons/si'
 import Reveal from './Reveal'
 
 const skills = [
   { name: 'PHP', Icon: SiPhp, color: '#8892bf', category: 'Backend - Server-side language', detail: 'Building server-side features and business logic.' },
   { name: 'JavaScript', Icon: SiJavascript, color: '#f0db4f', category: 'Frontend - Programming language', detail: 'Adding useful interactions to everyday workflows.' },
-  { name: 'React JS', Icon: SiReact, color: '#61dafb', category: 'Frontend - UI library', detail: 'Building interactive, component-based user interfaces.' },
+  { name: 'CakePHP 5', Icon: SiCakephp, color: '#d4484b', category: 'Backend - PHP framework', detail: 'Working with CakePHP for server-side application development.' },
+  { name: 'React', Icon: SiReact, color: '#61dafb', category: 'Frontend - UI library', detail: 'Building interactive, component-based user interfaces.' },
   { name: 'MySQL', Icon: SiMysql, color: '#46a6c7', category: 'Data - Relational database', detail: 'Working with relational data and operational records.' },
   { name: 'jQuery', Icon: SiJquery, color: '#78bdf2', category: 'Frontend - UI library', detail: 'Creating dynamic forms and responsive UI behavior.' },
   { name: 'Bootstrap', Icon: SiBootstrap, color: '#ae8bff', category: 'Frontend - UI framework', detail: 'Building layouts that adapt across screen sizes.' },
@@ -34,7 +35,7 @@ export default function Skills() {
         <Reveal>
           <div className="skills-heading">
             <div><p className="tag">THE TOOLS I WORK WITH</p><h2 className="section-title">My <span className="technology-accent">technology</span> <span>stack.</span></h2></div>
-            <p className="skills-intro">A few of the languages and tools I use across my projects. Choose one to see where it fits.</p>
+            <p className="skills-intro">A few of the languages and tools I use across my projects. Choose a technology to see its role in my toolkit.</p>
           </div>
         </Reveal>
 

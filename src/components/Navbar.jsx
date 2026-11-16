@@ -40,13 +40,12 @@ export default function Navbar() {
 
   return (
     <header className={`sn ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container sn-inner">
-        <a href="#home" className="sn-logo">
-          <span className="sn-mark">S</span>
+      <div className="sn-inner">
+        <a href="#home" className="sn-logo" aria-label="Saloni Sharma home" title="Saloni Sharma home">
+          <span className="sn-mark" aria-hidden="true">S</span>
           <span className="sn-wordmark">Saloni<span>.</span></span>
         </a>
-
-        <nav id="site-navigation" className={`sn-links ${open ? 'open' : ''}`}>
+        <nav id="site-navigation" aria-label="Main navigation" className={`sn-links ${open ? 'open' : ''}`}>
           {links.map((l) => (
             <a
               key={l}
@@ -60,8 +59,7 @@ export default function Navbar() {
             </a>
           ))}
         </nav>
-
-        <a href="#contact" className="sn-contact-link">Let’s talk <span aria-hidden="true">↗</span></a>
+        <a href="#contact" className="sn-contact-link">Let’s talk</a>
         <button className={`sn-toggle ${open ? 'is-open' : ''}`} type="button" aria-label={open ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={open} aria-controls="site-navigation" onClick={() => setOpen(!open)}>
           <span /><span />
         </button>

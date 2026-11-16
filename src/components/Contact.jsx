@@ -1,4 +1,5 @@
-﻿import { useState } from 'react'
+﻿import { useRef, useState } from 'react'
+import { useInView } from 'framer-motion'
 import Reveal from './Reveal'
 
 const formEndpoint = import.meta.env.VITE_FORM_ENDPOINT
@@ -8,6 +9,8 @@ const CURRENT_YEAR = new Date().getFullYear()
 export default function Contact() {
   const [status, setStatus] = useState('idle')
   const [message, setMessage] = useState('')
+  const sectionRef = useRef(null)
+  const hasEntered = useInView(sectionRef, { amount: 0.12, once: true })
 
   const submitContact = async (event) => {
     event.preventDefault()
@@ -36,7 +39,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="contact">
+    <section id="contact" className={`contact${hasEntered ? ' is-entered' : ''}`} ref={sectionRef}>
       <div className="container">
         <Reveal>
           <p className="tag">CONTACT / OPEN TO A GOOD CONVERSATION</p>
@@ -46,7 +49,7 @@ export default function Contact() {
 
         <div className="contact-content-grid">
           <Reveal>
-            <form className="contact-form" onSubmit={submitContact}>
+            <form className="contact-form" onSubmit={submitContact} aria-label="Contact form">
               <label htmlFor="contact-name">Name</label>
               <input id="contact-name" name="name" type="text" autoComplete="name" minLength="2" maxLength="100" required />
               <label htmlFor="contact-email">Email</label>
@@ -63,7 +66,7 @@ export default function Contact() {
               <p className="tag">OR REACH ME DIRECTLY</p>
               <a href="mailto:salonisharma58888@gmail.com">salonisharma58888@gmail.com <span aria-hidden="true">↗</span></a>
               <a href="https://github.com/Salonisharma2415" target="_blank" rel="noreferrer">GitHub · Salonisharma2415 <span aria-hidden="true">↗</span></a>
-              {linkedInUrl ? <a href={linkedInUrl} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a> : <span className="contact-link-placeholder">LinkedIn · profile link to add</span>}
+              {linkedInUrl && <a href={linkedInUrl} target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>}
               <a className="btn resume-button" href="/resume.pdf" download>Download Resume <span aria-hidden="true">↓</span></a>
             </div>
           </Reveal>
