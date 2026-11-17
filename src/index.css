@@ -8149,5 +8149,20 @@ body { background: #0b0f17; }
 .hero-3d-scene canvas { display: block; width: 100%; height: 100%; }
 .hero-3d-placeholder { width: min(100%, 580px); aspect-ratio: 1.08; justify-self: center; }
 @media (max-width: 560px) {
-  .hero-3d-scene, .hero-3d-placeholder { aspect-ratio: .92; }
+  .hero-3d-scene, .hero-3d-placeholder { width: 100%; aspect-ratio: .76; }
+  .about-section { padding-top: 76px; }
+  .about-wordstage { min-height: 128px; padding-bottom: 28px; }
+  .about-profile-panel { gap: 13px; padding: 12px; border-radius: 15px; }
+  .about-portrait-column { gap: 7px; }
+  .about-portrait-column .profile-portrait { min-height: 0; height: auto; aspect-ratio: 1.22; max-height: none; border-radius: 11px; }
+  .portrait-caption { font-size: 5px; letter-spacing: .75px; }
+  .about-bio { padding: 0 2px 2px; }
+  .about-bio .tag { margin-bottom: 8px; font-size: 6px; letter-spacing: .12em; }
+  .about-bio h2 { margin-bottom: 7px; font-size: clamp(1.65rem, 7.4vw, 2rem); line-height: 1.04; }
+  .about-bio-lead { margin: 8px 0; font-size: .78rem; line-height: 1.45; }
+  .about-highlights { gap: 5px; }
+  .about-highlights > div { padding: 7px 9px; border-radius: 9px; }
+  .about-highlights strong, .about-highlights span { font-size: .64rem; }
+  .about-bio-copy { margin: 9px 0; font-size: .68rem; line-height: 1.5; }
+  .about-link { font-size: .78rem; }
 }
