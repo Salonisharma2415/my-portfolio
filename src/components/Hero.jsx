@@ -1,4 +1,6 @@
-import DeveloperWorkspace from './DeveloperWorkspace'
+import { lazy, Suspense } from 'react'
+
+const Hero3D = lazy(() => import('./Hero3D'))
 
 const technologies = ['PHP', 'JavaScript', 'MySQL', 'jQuery', 'REST APIs']
 
@@ -23,9 +25,13 @@ export default function Hero() {
               {technologies.map((technology) => <span key={technology}>{technology}</span>)}
             </div>
           </div>
-          <DeveloperWorkspace />
+          <Suspense fallback={<div className="hero-3d-placeholder" aria-hidden="true" />}>
+            <Hero3D />
+          </Suspense>
         </div>
       </div>
     </section>
   )
 }
+
+
